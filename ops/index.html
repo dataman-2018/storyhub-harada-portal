@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StoryHub × 原田朋事務所 — 運用・協業パターン</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0d0d0d;
+    --ink-2: #3a3a3a;
+    --ink-3: #8a8a8a;
+    --paper: #fafafa;
+    --paper-2: #f0f0f0;
+    --paper-3: #e0e0e0;
+    --rule: rgba(13,13,13,0.08);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Noto Sans JP", sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 1.75;
+    font-weight: 300;
+  }
+
+  /* Nav */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: var(--paper);
+    border-bottom: 1px solid var(--rule);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px; height: 52px;
+  }
+  .nav-logo {
+    font-family: "DM Serif Display", serif;
+    font-size: 17px; color: var(--ink);
+    letter-spacing: 0.01em; text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a {
+    font-size: 12px; color: var(--ink-3); text-decoration: none;
+    letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--ink); }
+
+  /* Layout */
+  .page {
+    min-height: 100vh; padding: 100px 0 80px;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .container { max-width: 860px; margin: 0 auto; padding: 0 48px; width: 100%; }
+  .divider { width: 100%; height: 1px; background: var(--rule); margin: 0; }
+  .chap {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--ink-3); margin-bottom: 20px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .chap::before { content: ""; display: block; width: 28px; height: 1px; background: var(--ink-3); }
+
+  /* Hero */
+  #hero {
+    background: var(--ink); color: var(--paper);
+    min-height: 100vh; display: flex; flex-direction: column;
+    justify-content: flex-end; padding: 0 0 72px;
+    position: relative; overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 80% 20%, rgba(138,138,138,0.08), transparent 50%),
+      repeating-linear-gradient(0deg, transparent, transparent 79px, rgba(255,255,255,0.02) 80px),
+      repeating-linear-gradient(90deg, transparent, transparent 79px, rgba(255,255,255,0.02) 80px);
+  }
+  .hero-tag {
+    font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: rgba(250,250,250,0.4); margin-bottom: 32px;
+  }
+  .hero-h1 {
+    font-family: "DM Serif Display", serif;
+    font-size: clamp(34px, 5vw, 54px); line-height: 1.15;
+    color: var(--paper); max-width: 680px; margin-bottom: 28px;
+    font-weight: 400;
+  }
+  .hero-lead {
+    font-size: 14px; color: rgba(250,250,250,0.55);
+    max-width: 520px; line-height: 1.85;
+    border-left: 2px solid rgba(250,250,250,0.2); padding-left: 18px;
+  }
+  .hero-meta {
+    position: absolute; top: 64px; right: 48px; text-align: right;
+    font-size: 12px; color: rgba(250,250,250,0.3); letter-spacing: 0.04em;
+  }
+
+  /* Headings */
+  .s-heading {
+    font-family: "DM Serif Display", serif;
+    font-size: clamp(26px, 3.5vw, 38px); line-height: 1.25;
+    color: var(--ink); margin-bottom: 12px; font-weight: 400;
+  }
+  .s-lead {
+    font-size: 14px; color: var(--ink-2); max-width: 600px;
+    line-height: 1.85; margin-bottom: 44px;
+  }
+
+  /* Roles — v-row */
+  .role-list {
+    display: flex; flex-direction: column; gap: 1px;
+    border: 1px solid var(--paper-3); border-radius: 4px; overflow: hidden;
+  }
+  .v-row {
+    display: grid; grid-template-columns: 48px 1fr 1fr;
+    background: var(--paper-2); align-items: stretch; transition: background 0.2s;
+  }
+  .v-row:hover { background: var(--paper); }
+  .v-num {
+    display: flex; align-items: center; justify-content: center;
+    font-family: "DM Serif Display", serif; font-size: 22px; color: var(--ink-3);
+    border-right: 1px solid var(--paper-3); padding: 24px 0;
+  }
+  .v-cell {
+    padding: 24px 20px; border-right: 1px solid var(--paper-3);
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .v-cell:last-child { border-right: none; }
+  .v-tag {
+    font-size: 10px; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--ink-3); margin-bottom: 6px;
+  }
+  .v-title { font-size: 14px; font-weight: 500; color: var(--ink); line-height: 1.5; }
+  .v-desc { font-size: 13px; color: var(--ink-2); line-height: 1.8; }
+
+  /* Partnership Cards */
+  .model-cards { display: flex; flex-direction: column; gap: 24px; }
+  .model-card { border: 1px solid var(--paper-3); border-radius: 4px; overflow: hidden; }
+  .model-card-head {
+    background: var(--ink); padding: 22px 28px;
+    display: flex; align-items: baseline; gap: 16px;
+  }
+  .model-card-label {
+    font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: rgba(250,250,250,0.4);
+  }
+  .model-card-name {
+    font-family: "DM Serif Display", serif;
+    font-size: 20px; color: var(--paper); font-weight: 400;
+  }
+  .model-card-body { background: white; padding: 28px; }
+  .model-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px 32px;
+  }
+  .model-item-label {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--ink-3); margin-bottom: 4px;
+  }
+  .model-item-value {
+    font-size: 14px; color: var(--ink); line-height: 1.7;
+  }
+  .model-case {
+    margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--rule);
+    grid-column: 1 / -1;
+  }
+  .model-case-label {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--ink-3); margin-bottom: 4px;
+  }
+  .model-case-value {
+    font-size: 14px; color: var(--ink-2); line-height: 1.7;
+  }
+
+  /* Insight box */
+  .insight-box {
+    background: var(--paper-2); border-left: 3px solid var(--ink);
+    border-radius: 0 4px 4px 0; padding: 20px 24px;
+    font-size: 14px; color: var(--ink-2); line-height: 1.85;
+    margin-top: 32px;
+  }
+  .insight-box strong { color: var(--ink); font-weight: 500; }
+
+  /* Working Style */
+  .ws-section { margin-bottom: 36px; }
+  .ws-section:last-child { margin-bottom: 0; }
+  .ws-title {
+    font-size: 15px; font-weight: 500; color: var(--ink);
+    margin-bottom: 12px; padding-bottom: 8px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .ws-list { list-style: none; padding: 0; }
+  .ws-list li {
+    font-size: 14px; color: var(--ink-2); line-height: 1.85;
+    padding: 6px 0 6px 20px; position: relative;
+  }
+  .ws-list li::before {
+    content: ""; position: absolute; left: 0; top: 14px;
+    width: 6px; height: 6px; border: 1px solid var(--ink-3);
+    border-radius: 50%;
+  }
+
+  /* Roadmap */
+  .rm-list { display: flex; flex-direction: column; gap: 20px; }
+  .rm-row {
+    display: grid; grid-template-columns: 160px 1fr;
+    border: 1px solid var(--paper-3); border-radius: 4px; overflow: hidden;
+  }
+  .rm-phase {
+    background: var(--paper-2); padding: 28px 24px;
+    border-right: 1px solid var(--paper-3);
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .rm-ph-tag {
+    font-size: 10px; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--ink-3); margin-bottom: 6px;
+  }
+  .rm-ph-name {
+    font-size: 14px; font-weight: 500; color: var(--ink); line-height: 1.4;
+  }
+  .rm-body { padding: 28px; background: white; }
+  .rm-items { list-style: none; padding: 0; }
+  .rm-items li {
+    font-size: 14px; color: var(--ink-2); line-height: 1.85;
+    padding: 4px 0 4px 20px; position: relative;
+  }
+  .rm-items li::before {
+    content: ""; position: absolute; left: 0; top: 12px;
+    width: 8px; height: 1px; background: var(--ink-3);
+  }
+
+  /* Closing */
+  #closing {
+    background: var(--ink); color: var(--paper);
+    min-height: 60vh; display: flex; flex-direction: column; justify-content: center;
+  }
+  #closing .chap { color: rgba(250,250,250,0.35); }
+  #closing .chap::before { background: rgba(250,250,250,0.35); }
+  .next-steps { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 48px; }
+  .ns-card {
+    padding: 24px 22px;
+    border: 1px solid rgba(255,255,255,0.1); border-radius: 4px;
+  }
+  .ns-step {
+    font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: rgba(250,250,250,0.35); margin-bottom: 8px;
+  }
+  .ns-name { font-size: 14px; font-weight: 400; color: var(--paper); line-height: 1.6; }
+  .closing-link {
+    display: inline-flex; color: rgba(250,250,250,0.7); text-decoration: none;
+    font-size: 13px; border-bottom: 1px solid rgba(250,250,250,0.3);
+    width: fit-content; transition: color 0.2s;
+  }
+  .closing-link:hover { color: var(--paper); }
+
+  /* Footer */
+  footer {
+    background: var(--ink); border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 32px 48px; display: flex; justify-content: space-between; align-items: center;
+  }
+  .footer-brand {
+    font-family: "DM Serif Display", serif;
+    font-size: 16px; color: rgba(250,250,250,0.5);
+  }
+  .footer-meta { font-size: 12px; color: rgba(250,250,250,0.3); text-align: right; }
+
+  /* Responsive */
+  @media (max-width: 680px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .container { padding: 0 24px; }
+    .v-row { grid-template-columns: 1fr; }
+    .v-num { display: none; }
+    .v-cell { border-right: none; border-bottom: 1px solid var(--paper-3); }
+    .v-cell:last-child { border-bottom: none; }
+    .model-grid { grid-template-columns: 1fr; }
+    .next-steps { grid-template-columns: 1fr; }
+    .rm-row { grid-template-columns: 1fr; }
+    .rm-phase { border-right: none; border-bottom: 1px solid var(--paper-3); }
+    .hero-meta { position: static; text-align: left; margin-bottom: 32px; }
+    #hero { justify-content: center; padding: 100px 0 60px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="../">StoryHub</a>
+  <div class="nav-links">
+    <a href="../">Portal</a>
+    <a href="#roles">Roles</a>
+    <a href="#models">Models</a>
+    <a href="#working">Working Style</a>
+    <a href="#roadmap">Roadmap</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-meta">Confidential<br>2026年4月</div>
+  <div class="container">
+    <p class="hero-tag">Operations</p>
+    <h1 class="hero-h1">一緒に、どう動くか。</h1>
+    <p class="hero-lead">
+      StoryHub × 原田朋事務所の協業体制・<br>
+      役割分担・契約パターン。
+    </p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- Chapter 1: Roles -->
+<section id="roles" class="page" style="background: var(--paper);">
+  <div class="container">
+    <div class="chap">Chapter 1 — Roles</div>
+    <h2 class="s-heading">それぞれの持ち場で、<br>最大値を出す。</h2>
+    <p class="s-lead">両者の強みを明確に分けることで、重複なく価値を最大化する。</p>
+
+    <div class="role-list">
+      <div class="v-row">
+        <div class="v-num">1</div>
+        <div class="v-cell">
+          <div class="v-tag">原田朋事務所</div>
+          <div class="v-title">ブランド戦略設計</div>
+          <div class="v-desc">コンセプト策定・ビジョンの言語化</div>
+        </div>
+        <div class="v-cell">
+          <div class="v-tag">StoryHub</div>
+          <div class="v-desc">戦略をプロダクトに実装</div>
+        </div>
+      </div>
+      <div class="v-row">
+        <div class="v-num">2</div>
+        <div class="v-cell">
+          <div class="v-tag">原田朋事務所</div>
+          <div class="v-title">ブランドメモリー要件定義</div>
+          <div class="v-desc">攻めのトーン設計・ガードレール定義</div>
+        </div>
+        <div class="v-cell">
+          <div class="v-tag">StoryHub</div>
+          <div class="v-desc">AI基盤への実装・運用</div>
+        </div>
+      </div>
+      <div class="v-row">
+        <div class="v-num">3</div>
+        <div class="v-cell">
+          <div class="v-tag">原田朋事務所</div>
+          <div class="v-title">顧客開拓</div>
+          <div class="v-desc">既存ネットワークからの紹介・共同営業</div>
+        </div>
+        <div class="v-cell">
+          <div class="v-tag">StoryHub</div>
+          <div class="v-desc">リード獲得・提案書作成・営業基盤</div>
+        </div>
+      </div>
+      <div class="v-row">
+        <div class="v-num">4</div>
+        <div class="v-cell">
+          <div class="v-tag">原田朋事務所</div>
+          <div class="v-title">コンテンツ品質管理</div>
+          <div class="v-desc">クリエイティブディレクション</div>
+        </div>
+        <div class="v-cell">
+          <div class="v-tag">StoryHub</div>
+          <div class="v-desc">データ分析・効果測定</div>
+        </div>
+      </div>
+      <div class="v-row">
+        <div class="v-num">5</div>
+        <div class="v-cell">
+          <div class="v-tag">原田朋事務所</div>
+          <div class="v-title">ナレッジ発信</div>
+          <div class="v-desc">共著（ストーリー経営の概念定義）</div>
+        </div>
+        <div class="v-cell">
+          <div class="v-tag">StoryHub</div>
+          <div class="v-desc">編集・出版プロセス支援</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- Chapter 2: Partnership Models -->
+<section id="models" class="page" style="background: var(--paper-2);">
+  <div class="container">
+    <div class="chap">Chapter 2 — Partnership Models</div>
+    <h2 class="s-heading">3つのパターンから、<br>最適な形を選ぶ。</h2>
+    <p class="s-lead">関与度と報酬構造の組み合わせで、3つの協業パターンを提示する。</p>
+
+    <div class="model-cards">
+
+      <!-- Pattern A -->
+      <div class="model-card">
+        <div class="model-card-head">
+          <span class="model-card-label">Pattern A</span>
+          <span class="model-card-name">共同事業開発型</span>
+        </div>
+        <div class="model-card-body">
+          <div class="model-grid">
+            <div>
+              <div class="model-item-label">報酬</div>
+              <div class="model-item-value">レベニューシェア（固定費なし）</div>
+            </div>
+            <div>
+              <div class="model-item-label">関与</div>
+              <div class="model-item-value">PJ業務に直接参画</div>
+            </div>
+            <div>
+              <div class="model-item-label">メリット</div>
+              <div class="model-item-value">双方が成果にコミット。StoryHub側のキャッシュフロー負担なし</div>
+            </div>
+            <div>
+              <div class="model-item-label">デメリット</div>
+              <div class="model-item-value">案件獲得まで原田さん側に収入なし</div>
+            </div>
+            <div class="model-case">
+              <div class="model-case-label">適するケース</div>
+              <div class="model-case-value">事業開発に深く関与し、共に顧客を開拓する場合</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pattern B -->
+      <div class="model-card">
+        <div class="model-card-head">
+          <span class="model-card-label">Pattern B</span>
+          <span class="model-card-name">ブランド顧問型</span>
+        </div>
+        <div class="model-card-body">
+          <div class="model-grid">
+            <div>
+              <div class="model-item-label">報酬</div>
+              <div class="model-item-value">月額固定</div>
+            </div>
+            <div>
+              <div class="model-item-label">関与</div>
+              <div class="model-item-value">定例 + 壁打ち（PJ業務には直接関与しない）</div>
+            </div>
+            <div>
+              <div class="model-item-label">メリット</div>
+              <div class="model-item-value">安定的な知見活用。稼働限定で負担軽い</div>
+            </div>
+            <div>
+              <div class="model-item-label">デメリット</div>
+              <div class="model-item-value">成果との連動が弱い</div>
+            </div>
+            <div class="model-case">
+              <div class="model-case-label">適するケース</div>
+              <div class="model-case-value">原田さんの稼働が限られる場合</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pattern C -->
+      <div class="model-card">
+        <div class="model-card-head">
+          <span class="model-card-label">Pattern C</span>
+          <span class="model-card-name">ハイブリッド型</span>
+        </div>
+        <div class="model-card-body">
+          <div class="model-grid">
+            <div>
+              <div class="model-item-label">報酬</div>
+              <div class="model-item-value">月額ベース（低め）+ 案件参画時にシェア上乗せ</div>
+            </div>
+            <div>
+              <div class="model-item-label">関与</div>
+              <div class="model-item-value">基本は壁打ち、案件時に参画</div>
+            </div>
+            <div>
+              <div class="model-item-label">メリット</div>
+              <div class="model-item-value">安定とアップサイドの両立</div>
+            </div>
+            <div>
+              <div class="model-item-label">デメリット</div>
+              <div class="model-item-value">条件設計がやや複雑</div>
+            </div>
+            <div class="model-case">
+              <div class="model-case-label">適するケース</div>
+              <div class="model-case-value">長期パートナーシップを前提に段階的に関与を深める場合</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="insight-box">
+      <strong>初期フェーズではパターンA または C を推奨。</strong><br>
+      壁打ちだけでは価値が最大化しない。原田さんの顧客への直接関与がソリューションの品質を左右する。
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- Chapter 3: Working Style -->
+<section id="working" class="page" style="background: var(--paper);">
+  <div class="container">
+    <div class="chap">Chapter 3 — Working Style</div>
+    <h2 class="s-heading">日常の動き方。</h2>
+
+    <div class="ws-section">
+      <div class="ws-title">定例ミーティング</div>
+      <ul class="ws-list">
+        <li>頻度: 週1回 or 隔週（要すり合わせ）</li>
+        <li>内容: 事業開発の進捗共有、ソリューション設計のディスカッション、ブランド壁打ち</li>
+      </ul>
+    </div>
+
+    <div class="ws-section">
+      <div class="ws-title">プロジェクト業務（クライアント案件時）</div>
+      <ul class="ws-list">
+        <li>ブランドコンセプト策定ワークショップの設計・ファシリテーション</li>
+        <li>ブランドメモリーの要件定義（攻めのトーン＋ガードレール）</li>
+        <li>クライアントへのプレゼンテーション・レビュー</li>
+      </ul>
+    </div>
+
+    <div class="ws-section">
+      <div class="ws-title">コンテンツ発信</div>
+      <ul class="ws-list">
+        <li>StoryHub × 原田さんの対談コンテンツ（ポッドキャスト・記事等）</li>
+        <li>ブランド哲学に関するナレッジ発信</li>
+        <li>将来的に書籍化（「ストーリー経営」概念の共同定義）</li>
+      </ul>
+    </div>
+
+    <div class="ws-section">
+      <div class="ws-title">稼働の記録と見直し</div>
+      <ul class="ws-list">
+        <li>稼働時間を記録し、3ヶ月ごとに見直し</li>
+        <li>案件の増減に応じて柔軟に調整</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- Chapter 4: Roadmap -->
+<section id="roadmap" class="page" style="background: var(--paper-2);">
+  <div class="container">
+    <div class="chap">Chapter 4 — Roadmap</div>
+    <h2 class="s-heading">まずは3ヶ月で、型をつくる。</h2>
+    <p class="s-lead">2フェーズに分けてリスクを管理しながら、再現可能な事業モデルを構築する。</p>
+
+    <div class="rm-list">
+      <div class="rm-row">
+        <div class="rm-phase">
+          <div class="rm-ph-tag">Phase 1</div>
+          <div class="rm-ph-name">2026年4-6月</div>
+        </div>
+        <div class="rm-body">
+          <div class="ws-title" style="margin-bottom: 16px;">ソリューション設計 + テスト顧客</div>
+          <ul class="rm-items">
+            <li>協業パターンの合意・契約締結</li>
+            <li>ブランドストーリースタジオのソリューション設計</li>
+            <li>ブランドメモリーの要件定義</li>
+            <li>テスト顧客1-2社の選定・アプローチ・提供・改善</li>
+          </ul>
+        </div>
+      </div>
+      <div class="rm-row">
+        <div class="rm-phase">
+          <div class="rm-ph-tag">Phase 2</div>
+          <div class="rm-ph-name">2026年7月〜</div>
+        </div>
+        <div class="rm-body">
+          <div class="ws-title" style="margin-bottom: 16px;">本格展開</div>
+          <ul class="rm-items">
+            <li>テスト顧客の成果をもとに再現可能な型を確立</li>
+            <li>営業体制の構築・顧客開拓の本格化</li>
+            <li>「ストーリー経営」書籍化の検討開始</li>
+            <li>ソリューションのプロダクト実装の深化</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- Closing -->
+<section id="closing">
+  <div class="container">
+    <div class="chap">Next Steps</div>
+    <div class="next-steps">
+      <div class="ns-card">
+        <div class="ns-step">Step 1</div>
+        <div class="ns-name">協業の方向性と<br>スコープの合意</div>
+      </div>
+      <div class="ns-card">
+        <div class="ns-step">Step 2</div>
+        <div class="ns-name">パターン選択と<br>報酬構造の詳細合意</div>
+      </div>
+      <div class="ns-card">
+        <div class="ns-step">Step 3</div>
+        <div class="ns-name">テスト顧客の候補<br>リストアップ・Phase 1キックオフ</div>
+      </div>
+    </div>
+    <a class="closing-link" href="../lp">サービスの詳細はこちら →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand">StoryHub × 原田朋事務所</div>
+  <div class="footer-meta">2026年4月 | Confidential</div>
+</footer>
+
+</body>
+</html>

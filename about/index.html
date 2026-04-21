@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About StoryHub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0d0d0d;
+    --ink-2: #3a3a3a;
+    --ink-3: #8a8a8a;
+    --paper: #fafafa;
+    --paper-2: #f0f0f0;
+    --paper-3: #e0e0e0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Noto Sans JP", sans-serif;
+    font-weight: 300;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* --- Nav --- */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: rgba(250,250,250,0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--paper-3);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+    height: 56px;
+  }
+  .nav-logo {
+    font-family: "DM Serif Display", serif;
+    font-size: 17px;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    align-items: center;
+  }
+  .nav-links a {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--ink-3);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--ink); }
+
+  /* --- Layout --- */
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+  section {
+    padding: 80px 0;
+  }
+  section + section {
+    border-top: 1px solid var(--paper-3);
+  }
+
+  /* --- Hero --- */
+  .hero {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 140px 0 96px;
+    position: relative;
+  }
+  .hero .container {
+    position: relative;
+  }
+  .hero-meta {
+    position: absolute;
+    top: -40px;
+    right: 28px;
+    font-size: 11px;
+    font-weight: 400;
+    color: rgba(250,250,250,0.35);
+    letter-spacing: 0.04em;
+  }
+  .hero-tag {
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(250,250,250,0.4);
+    margin-bottom: 24px;
+  }
+  .hero h1 {
+    font-family: "DM Serif Display", serif;
+    font-size: clamp(28px, 4.5vw, 44px);
+    font-weight: 400;
+    line-height: 1.35;
+    margin-bottom: 20px;
+  }
+  .hero-lead {
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(250,250,250,0.6);
+    line-height: 1.9;
+    max-width: 540px;
+  }
+
+  /* --- Section headings --- */
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: "DM Serif Display", serif;
+    font-size: clamp(22px, 3vw, 32px);
+    font-weight: 400;
+    line-height: 1.4;
+    margin-bottom: 40px;
+  }
+
+  /* --- Mission --- */
+  .mission-card {
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 8px;
+    padding: 56px 48px;
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  .mission-card blockquote {
+    font-family: "DM Serif Display", serif;
+    font-size: clamp(20px, 3vw, 28px);
+    font-weight: 400;
+    line-height: 1.5;
+  }
+  .mission-body {
+    font-size: 14px;
+    color: var(--ink-2);
+    line-height: 2;
+    max-width: 680px;
+  }
+
+  /* --- Stat grid --- */
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+  .stat-item {
+    text-align: center;
+    padding: 28px 16px;
+    border: 1px solid var(--paper-3);
+    border-radius: 6px;
+  }
+  .stat-num {
+    font-family: "DM Serif Display", serif;
+    font-size: clamp(22px, 3vw, 30px);
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .stat-desc {
+    font-size: 12px;
+    color: var(--ink-3);
+    line-height: 1.6;
+  }
+  .context-list {
+    list-style: none;
+    padding: 0;
+  }
+  .context-list li {
+    font-size: 14px;
+    color: var(--ink-2);
+    line-height: 2;
+    padding-left: 20px;
+    position: relative;
+  }
+  .context-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 14px;
+    width: 6px;
+    height: 1px;
+    background: var(--ink-3);
+  }
+
+  /* --- Product cards --- */
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  .product-card {
+    border-left: 2px solid var(--paper-3);
+    padding: 24px 20px;
+  }
+  .product-num {
+    font-family: "DM Serif Display", serif;
+    font-size: 28px;
+    color: var(--ink-3);
+    margin-bottom: 8px;
+    line-height: 1;
+  }
+  .product-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .product-desc {
+    font-size: 12px;
+    color: var(--ink-3);
+    line-height: 1.8;
+  }
+
+  /* --- Layer stack --- */
+  .layer-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .layer-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px 24px;
+    border: 1px solid var(--paper-3);
+    border-radius: 6px;
+  }
+  .layer-item.highlight {
+    border: 2px solid var(--ink);
+  }
+  .layer-num {
+    font-family: "DM Serif Display", serif;
+    font-size: 20px;
+    color: var(--ink-3);
+    flex-shrink: 0;
+    width: 28px;
+    line-height: 1.4;
+  }
+  .layer-item.highlight .layer-num {
+    color: var(--ink);
+  }
+  .layer-content {
+    flex: 1;
+  }
+  .layer-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .layer-desc {
+    font-size: 12px;
+    color: var(--ink-3);
+    line-height: 1.7;
+  }
+  .layer-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--ink);
+    background: var(--paper-2);
+    border: 1px solid var(--paper-3);
+    border-radius: 3px;
+    padding: 2px 8px;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+
+  /* --- Credentials --- */
+  .cred-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 16px;
+  }
+  .cred-list li {
+    font-size: 14px;
+    color: var(--ink-2);
+    line-height: 1.8;
+    padding-left: 20px;
+    position: relative;
+  }
+  .cred-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 12px;
+    width: 8px;
+    height: 8px;
+    border: 1px solid var(--ink-3);
+    border-radius: 50%;
+  }
+
+  /* --- Closing --- */
+  .closing {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 80px 0;
+    text-align: center;
+  }
+  .closing-links {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 48px;
+  }
+  .closing-links a {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--paper);
+    border: 1px solid rgba(250,250,250,0.2);
+    border-radius: 6px;
+    padding: 14px 32px;
+    text-decoration: none;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .closing-links a:hover {
+    background: rgba(255,255,255,0.06);
+    border-color: rgba(250,250,250,0.4);
+  }
+  .closing-footer {
+    font-size: 12px;
+    color: rgba(250,250,250,0.25);
+    line-height: 1.8;
+  }
+
+  /* --- Responsive --- */
+  @media (max-width: 680px) {
+    nav { padding: 0 20px; }
+    .container { padding: 0 20px; }
+    section { padding: 56px 0; }
+    .hero { padding: 120px 0 64px; }
+    .hero-meta { position: static; text-align: right; margin-bottom: 24px; }
+    .stat-grid { grid-template-columns: 1fr; gap: 12px; }
+    .product-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+    .mission-card { padding: 40px 28px; }
+    .layer-item { flex-direction: column; gap: 8px; }
+    .layer-num { width: auto; }
+    .closing-links { flex-direction: column; align-items: center; }
+  }
+  @media (max-width: 480px) {
+    .product-grid { grid-template-columns: 1fr; }
+    .nav-links { gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav>
+  <a href="../" class="nav-logo">StoryHub</a>
+  <div class="nav-links">
+    <a href="../">Portal</a>
+    <a href="#mission">Mission</a>
+    <a href="#market">Market</a>
+    <a href="#platform">Platform</a>
+    <a href="#layers">Structure</a>
+    <a href="#credentials">Credentials</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="container">
+    <div class="hero-meta">StoryHub株式会社</div>
+    <div class="hero-tag">About StoryHub</div>
+    <h1>語る力を、すべての企業に。</h1>
+    <p class="hero-lead">ストーリーテリングの全プロセスを支える統合AI基盤。<br>導入企業150社超。</p>
+  </div>
+</div>
+
+<!-- Mission -->
+<section id="mission">
+  <div class="container">
+    <div class="section-label">Mission</div>
+    <div class="section-title">ミッション</div>
+    <div class="mission-card">
+      <blockquote>すべての企業が、自分の言葉で語れるようになる。</blockquote>
+    </div>
+    <p class="mission-body">StoryHubは、企業のストーリーテリングを「つくる・届ける・守る・育てる」の全プロセスで支援するAI基盤です。メディア品質基準のAIエディターを中核に、150社超の企業に導入されています。</p>
+  </div>
+</section>
+
+<!-- Market Context -->
+<section id="market">
+  <div class="container">
+    <div class="section-label">Market Context</div>
+    <div class="section-title">なぜ今、ストーリーテリングが経営課題なのか。</div>
+    <div class="stat-grid">
+      <div class="stat-item">
+        <div class="stat-num">1,177社+</div>
+        <div class="stat-desc">統合報告書を発行する<br>上場企業（2024年）</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">150社+</div>
+        <div class="stat-desc">StoryHub<br>導入企業数</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">特許取得済</div>
+        <div class="stat-desc">AI支援コンテンツ<br>制作の特許</div>
+      </div>
+    </div>
+    <ul class="context-list">
+      <li>ストーリーテリングが部門横断の経営課題に</li>
+      <li>東証がプライム・スタンダード全上場会社に株主との対話を要請</li>
+      <li>ものづくり日本が「物語づくり」できていないギャップ</li>
+      <li>AIの登場で量産は可能になったが、一貫性・ブランド毀損リスクも増大</li>
+      <li>WEFグローバルリスクレポートで「誤情報」が2年連続1位</li>
+    </ul>
+  </div>
+</section>
+
+<!-- Platform -->
+<section id="platform">
+  <div class="container">
+    <div class="section-label">Platform</div>
+    <div class="section-title">StoryHub プラットフォーム</div>
+    <div class="product-grid">
+      <div class="product-card">
+        <div class="product-num">1</div>
+        <div class="product-name">Interview</div>
+        <div class="product-desc">AIオートインタビューで声を集める。投資家・顧客・社員の認知を可視化</div>
+      </div>
+      <div class="product-card">
+        <div class="product-num">2</div>
+        <div class="product-name">Studio</div>
+        <div class="product-desc">AIエディターでコンテンツを制作。メディア品質基準のAI支援。導入企業150社超</div>
+      </div>
+      <div class="product-card">
+        <div class="product-num">3</div>
+        <div class="product-name">Feed</div>
+        <div class="product-desc">ストーリーを配信・効果測定。チャネル横断で一貫した語りを届ける</div>
+      </div>
+      <div class="product-card">
+        <div class="product-num">4</div>
+        <div class="product-name">Brand Memory</div>
+        <div class="product-desc">ブランドの記憶を蓄積。ガイドライン・過去コンテンツ・トーンをAIが学習し一貫性を担保</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 Layers -->
+<section id="layers">
+  <div class="container">
+    <div class="section-label">Framework</div>
+    <div class="section-title">ストーリーテリングの6層構造</div>
+    <div class="layer-stack">
+      <div class="layer-item">
+        <div class="layer-num">1</div>
+        <div class="layer-content">
+          <div class="layer-name">Vision / Mission</div>
+          <div class="layer-desc">企業の存在意義</div>
+        </div>
+      </div>
+      <div class="layer-item">
+        <div class="layer-num">2</div>
+        <div class="layer-content">
+          <div class="layer-name">Story Keiei</div>
+          <div class="layer-desc">ストーリーを資本と捉える経営哲学</div>
+        </div>
+      </div>
+      <div class="layer-item">
+        <div class="layer-num">3</div>
+        <div class="layer-content">
+          <div class="layer-name">Story Capital Management</div>
+          <div class="layer-desc">ストーリー資本のマネジメントフレームワーク</div>
+        </div>
+      </div>
+      <div class="layer-item highlight">
+        <div class="layer-num">4</div>
+        <div class="layer-content">
+          <div class="layer-name">Brand Story Studio <span class="layer-badge">原田さんとの領域</span></div>
+          <div class="layer-desc">プロフェッショナル × AI の共同ソリューション</div>
+        </div>
+      </div>
+      <div class="layer-item">
+        <div class="layer-num">5</div>
+        <div class="layer-content">
+          <div class="layer-name">StoryHub Platform</div>
+          <div class="layer-desc">Interview / Studio / Feed / Brand Memory</div>
+        </div>
+      </div>
+      <div class="layer-item">
+        <div class="layer-num">6</div>
+        <div class="layer-content">
+          <div class="layer-name">Operations</div>
+          <div class="layer-desc">日々のコンテンツ制作・配信・分析</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Credentials -->
+<section id="credentials">
+  <div class="container">
+    <div class="section-label">Credentials</div>
+    <div class="section-title">実績</div>
+    <ul class="cred-list">
+      <li>導入企業150社超（朝日新聞社ほか大手メディア）</li>
+      <li>特許取得済</li>
+      <li>統合報告書・採用広報・IR・PRの各領域で展開</li>
+      <li>note社との協業実績</li>
+    </ul>
+  </div>
+</section>
+
+<!-- Closing -->
+<div class="closing">
+  <div class="container">
+    <div class="closing-links">
+      <a href="../lp">協業提案の詳細はこちら &rarr;</a>
+      <a href="../ops">運用プランはこちら &rarr;</a>
+    </div>
+    <div class="closing-footer">StoryHub株式会社 | 2026年4月 | Confidential</div>
+  </div>
+</div>
+
+</body>
+</html>
