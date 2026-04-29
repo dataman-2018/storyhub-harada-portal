@@ -1,7 +1,7 @@
 {
   "functions": {
     "api/site.js": {
-      "includeFiles": "{index.html,lp/index.html,ops/index.html,about/index.html}"
+      "includeFiles": "{index.html,lp/index.html,ops/index.html,about/index.html,harada_photo.jpg}"
     }
   },
   "routes": [
