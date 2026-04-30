@@ -255,6 +255,9 @@
     font-size: 18px; font-weight: 400; margin-bottom: 8px;
   }
   .bridge-bank-desc { font-size: 12px; opacity: 0.65; line-height: 1.7; }
+  .bridge-right .bridge-bank-label,
+  .bridge-right .bridge-bank-title,
+  .bridge-right .bridge-bank-desc { text-align: right; }
   .bridge-connector {
     position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
     z-index: 2;
@@ -488,6 +491,17 @@
   }
   .prod-detail p {
     font-size: 13.5px; color: var(--ink-2); line-height: 1.85;
+  }
+
+  /* Brand memory questions */
+  .bm-questions {
+    margin: 36px 0; padding: 28px 0 28px 24px;
+    border-left: 2px solid rgba(250,250,250,0.2);
+  }
+  .bm-questions p {
+    font-family: "Noto Serif JP", serif;
+    font-size: 14.5px; color: rgba(250,250,250,0.75);
+    line-height: 2.2;
   }
 
   /* Brand memory +/- lists */
@@ -918,8 +932,15 @@
 <section class="chapter chapter-dark">
   <div class="container">
     <div class="ch-num">Special Feature</div>
-    <h2 class="ch-title">ブランドの「人格」を、記述する。</h2>
-    <p class="ch-lead">哲学とガイドラインの、ちょうどあいだに。</p>
+    <h2 class="ch-title">AI 時代に、ブランドは「記憶」を持つ。</h2>
+
+    <p class="ch-body">AI によって、誰もが速く、多くのコンテンツをつくれるようになりました。<br>けれど、速くつくれることと、企業らしく語れることは違います。</p>
+
+    <p class="ch-body">部門ごとに異なる AI を使い、担当者ごとに異なるプロンプトで発信すれば、<br>コンテンツは増えても、ブランドの輪郭は少しずつ曖昧になります。</p>
+
+    <p class="ch-body">言葉は増えているのに、何を大切にしている会社なのかが伝わらない。<br>発信は速くなっているのに、企業としての一貫性が失われていく。<br>AI 時代のブランドは、そんな静かなリスクにさらされています。</p>
+
+    <p class="ch-body">だから StoryHub は、AI にただ書かせるのではなく、<br>AI が参照すべき<strong>企業の記憶</strong>をつくります。</p>
 
     <!-- Diagram 4: Spectrum -->
     <div class="diagram-spectrum" style="background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1);">
@@ -939,30 +960,22 @@
       <div class="spectrum-note" style="color: rgba(250,250,250,0.5);">解釈の余地を残しながら、語りの方向は揃う。</div>
     </div>
 
-    <p class="ch-body">ブランドメモリーとは、単なるガイドラインでも、禁止事項のリストでもありません。そのブランドが何を大切にし、どんな言葉で世界と向き合うのか&mdash;&mdash;その人格そのものを、記述するものです。</p>
+    <p class="ch-body">ブランドメモリーは、ブランドガイドライン、過去の発信、編集判断、一次情報、読者の反応を蓄積し、企画、取材、制作、配信のすべての工程で働きます。</p>
 
-    <p class="ch-body">哲学として抽象に流れすぎず、マニュアルとして窮屈になりすぎない。Apple の「Think Different」が、社員一人ひとりの「シンプルさへの執着」へと自然に翻訳されていったように&mdash;&mdash;大きな言葉が、小さな振る舞いの基準になる。その変換の仕組みを、ブランドメモリーは担います。</p>
-
-    <div class="bm-compare" style="margin: 32px 0;">
-      <div class="bm-col" style="background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.1);">
-        <div class="bm-col-title" style="color: var(--paper);">+ このブランドらしい語り</div>
-        <ul>
-          <li style="color: rgba(250,250,250,0.65);">語り手の主観と発見を、丁寧に大切にする</li>
-          <li style="color: rgba(250,250,250,0.65);">複雑さを、安易に単純化せずに解きほぐす</li>
-          <li style="color: rgba(250,250,250,0.65);">読者を信頼した言葉で、対等に語る</li>
-          <li style="color: rgba(250,250,250,0.65);">静かな確信をもって、長く読まれる文を書く</li>
-        </ul>
-      </div>
-      <div class="bm-col" style="background: rgba(255,255,255,0.03); border-color: rgba(255,255,255,0.08);">
-        <div class="bm-col-title" style="color: rgba(250,250,250,0.7);">&minus; このブランドに似合わない語り</div>
-        <ul>
-          <li style="color: rgba(250,250,250,0.45);">権威や数字だけを並べて語ろうとする</li>
-          <li style="color: rgba(250,250,250,0.45);">トレンドに乗るためだけの言葉を選ぶ</li>
-          <li style="color: rgba(250,250,250,0.45);">曖昧さを「余白」と呼んで言いよどむ</li>
-          <li style="color: rgba(250,250,250,0.45);">結論を先延ばしにし、印象だけで終わらせる</li>
-        </ul>
-      </div>
+    <div class="bm-questions">
+      <p>何を語るべきか。</p>
+      <p>誰に、どのように語るべきか。</p>
+      <p>その表現は、この企業らしいのか。</p>
+      <p>その主張には、十分な根拠があるのか。</p>
+      <p>過去の語りと、未来の戦略はつながっているのか。</p>
+      <p>そして、その言葉は、ブランドが守るべき信頼を損なっていないか。</p>
     </div>
+
+    <p class="ch-body">ブランドメモリーは、人と AI のあいだで、静かに問い続けます。</p>
+
+    <p class="ch-body">それは、創造性を止めるためのルールではありません。<br>ブランドを守るために、表現を閉じ込めるものでもありません。</p>
+
+    <p class="ch-body">むしろ、企業らしさを失わずに、より自由に語るための土台です。<br>守るべきものがあるから、言葉は遠くまで届く。<br>記憶があるから、ブランドは変化の中でも自分らしく語り続けられる。</p>
   </div>
 </section>
 
