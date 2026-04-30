@@ -201,6 +201,83 @@
 
   @media(max-width:640px){.stat-strip,.card-grid,.case-grid,.team-grid,.bpo-grid{grid-template-columns:1fr}.mission-card,.hybrid-card{padding:24px 20px}.bar-label{min-width:90px;font-size:11px}nav{padding:0 20px}.nav-links{gap:16px}}
   @media print{.hero{padding:40px 24px}body{font-size:11px}nav{display:none}}
+
+  /* ── Brand Memory sections ── */
+
+  /* Definition card */
+  .def-card{background:var(--ink);color:var(--paper);border-radius:12px;padding:48px 40px;box-shadow:var(--shadow-lg);margin-bottom:24px;position:relative}
+  .def-card h3{font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:rgba(250,250,250,.45);margin-bottom:20px}
+  .def-card .def-text{font-family:"DM Serif Display",serif;font-size:clamp(16px,2.2vw,20px);font-weight:400;line-height:1.8;color:var(--paper)}
+  .def-card .def-text em{font-style:normal;border-bottom:1px solid rgba(250,250,250,.35);padding-bottom:1px}
+  .def-card .def-quote{margin-top:24px;padding-top:20px;border-top:1px solid rgba(255,255,255,.12);font-family:"DM Serif Display",serif;font-style:italic;font-size:14px;color:rgba(250,250,250,.5)}
+
+  /* Role cards (3-col) */
+  .role-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:24px 0}
+  .role-card{background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:28px;box-shadow:var(--shadow)}
+  .role-card .role-num{font-size:10px;letter-spacing:.12em;color:var(--ink-3);font-weight:500;margin-bottom:12px}
+  .role-card h4{font-family:"DM Serif Display",serif;font-size:18px;font-weight:400;color:var(--ink);margin-bottom:4px}
+  .role-card .role-jp{font-size:12px;color:var(--ink-3);margin-bottom:12px}
+  .role-card p{font-size:13px;color:var(--ink-2);line-height:1.75}
+  @media(max-width:640px){.role-grid{grid-template-columns:1fr}}
+
+  /* Pull quote */
+  .pull-quote{margin:32px 0 0;padding:28px 0 0;border-top:1px solid var(--rule);font-family:"DM Serif Display",serif;font-size:clamp(18px,2.5vw,24px);line-height:1.5;font-weight:400;color:var(--ink)}
+
+  /* Problem cards (5) */
+  .problem-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin:24px 0}
+  .problem-card{background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:24px;box-shadow:var(--shadow);position:relative;border-top:3px solid var(--ink)}
+  .problem-card .pn{font-size:10px;letter-spacing:.12em;color:var(--ink-3);font-weight:500;margin-bottom:10px}
+  .problem-card h4{font-size:15px;font-weight:500;color:var(--ink);margin-bottom:8px;line-height:1.4}
+  .problem-card p{font-size:13px;color:var(--ink-2);line-height:1.75}
+
+  /* Memory cards (7) */
+  .mem-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:24px 0}
+  .mem-card{background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:24px;box-shadow:var(--shadow)}
+  .mem-card.mem-full{grid-column:1/-1}
+  .mem-card .mem-num{font-size:10px;letter-spacing:.12em;color:var(--ink-3);font-weight:500;margin-bottom:8px}
+  .mem-card h4{font-family:"DM Serif Display",serif;font-size:17px;font-weight:400;color:var(--ink);margin-bottom:2px}
+  .mem-card .mem-jp{font-size:12px;color:var(--ink-3);margin-bottom:10px}
+  .mem-card p{font-size:13px;color:var(--ink-2);line-height:1.75}
+  .mem-card .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+  .mem-card .tag{font-size:11px;padding:3px 10px;border-radius:4px;font-weight:500;background:var(--paper-2);color:var(--ink-2)}
+  @media(max-width:640px){.mem-grid{grid-template-columns:1fr}}
+
+  /* OS product cards */
+  .os-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:24px 0}
+  .os-card{background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:28px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .os-card::before{content:'';position:absolute;top:0;left:0;width:5px;height:100%;background:var(--ink)}
+  .os-card .os-step{font-size:10px;letter-spacing:.12em;color:var(--ink-3);font-weight:500;margin-bottom:10px}
+  .os-card h4{font-size:16px;font-weight:500;color:var(--ink);margin-bottom:4px}
+  .os-card .os-role{font-size:12px;color:var(--ink-3);margin-bottom:12px}
+  .os-card p{font-size:13px;color:var(--ink-2);line-height:1.75}
+  @media(max-width:640px){.os-grid{grid-template-columns:1fr}}
+
+  /* Guardian cards (dark) */
+  .guardian-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:0;margin:24px 0}
+  .guardian-card{background:var(--ink);border:1px solid var(--ink-2);padding:24px 18px;min-height:240px}
+  .guardian-card h4{font-family:"DM Serif Display",serif;font-size:17px;font-weight:400;color:var(--paper);margin-bottom:4px}
+  .guardian-card .gjp{font-size:11px;color:var(--ink-3);margin-bottom:14px}
+  .guardian-card ul{list-style:none;padding:0}
+  .guardian-card li{font-size:12px;color:var(--paper-3);padding:4px 0;line-height:1.6;border-top:1px solid var(--ink-2)}
+  @media(max-width:640px){.guardian-grid{grid-template-columns:1fr}}
+
+  /* Maturity ladder */
+  .ladder{margin:24px 0;border-top:1px solid var(--rule)}
+  .level{display:grid;grid-template-columns:60px 160px 1fr 80px;gap:20px;padding:20px 0;border-bottom:1px solid var(--rule);align-items:center}
+  .level .lvl-num{font-family:"DM Serif Display",serif;font-size:40px;font-weight:400;color:var(--paper-3);text-align:right;line-height:1}
+  .level.active .lvl-num{color:var(--ink)}
+  .level .lvl-name{font-family:"DM Serif Display",serif;font-size:18px;font-weight:400}
+  .level .lvl-jp{font-size:11px;color:var(--ink-3);margin-top:2px}
+  .level p{font-size:13px;color:var(--ink-2);line-height:1.7}
+  .level .bar{height:4px;background:var(--paper-3);border-radius:2px;position:relative}
+  .level .bar-inner{position:absolute;left:0;top:0;height:100%;background:var(--ink);border-radius:2px}
+  .level.active .bar-inner{background:var(--ink)}
+  @media(max-width:640px){.level{grid-template-columns:40px 1fr;gap:10px}.level p,.level .bar{display:none}.level .lvl-num{font-size:28px}}
+
+  /* Closing section */
+  .closing{background:var(--ink);color:var(--paper);padding:80px 24px;text-align:center}
+  .closing-text{font-family:"DM Serif Display",serif;font-size:clamp(18px,2.8vw,28px);font-weight:400;line-height:1.65;max-width:700px;margin:0 auto;color:rgba(250,250,250,.85)}
+  .closing-meta{margin-top:40px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(250,250,250,.35)}
 </style>
 </head>
 <body>
@@ -214,6 +291,8 @@
     <a href="#platform">Platform</a>
     <a href="#cases">Cases</a>
     <a href="#team">Team</a>
+    <a href="#memory">Memory</a>
+    <a href="#guardian">Guardian</a>
   </div>
 </nav>
 
@@ -590,6 +669,288 @@
     </div>
   </section>
 
+  <!-- 09: BRAND MEMORY DEFINITION -->
+  <section id="memory">
+    <div class="sec-num">09</div>
+    <h2 class="sec-title">Brand Memory</h2>
+    <p class="sec-lead">OSの中核に置かれる、作動する記憶。ブランドメモリーは単なる機能ではありません。Insight・Interview・Studio・Feed の4プロダクトの下に位置し、企業のトーン、用語、過去発信、編集判断を構造化してAIに組み込む、StoryHub OSの中核技術です。</p>
+
+    <div class="def-card">
+      <h3>Core Definition</h3>
+      <p class="def-text">ブランドメモリーとは、企業の<em>思想・戦略・表現・判断・反応</em>を構造化し、人間とAIが一貫したストーリーテリングを行うための、StoryHub OSの<em>中核データレイヤー</em>である。</p>
+      <div class="def-quote">" CRMが顧客を記憶するように、Brand Memoryは企業の語りを記憶する。 "</div>
+    </div>
+
+    <div class="role-grid">
+      <div class="role-card">
+        <div class="role-num">01</div>
+        <h4>Memory</h4>
+        <div class="role-jp">企業の語りを記憶する</div>
+        <p>ブランドガイドライン、過去発信、編集判断、修正履歴、反応データを蓄積する。属人化したナレッジを、組織で共有できる資産へと変換する。</p>
+      </div>
+      <div class="role-card">
+        <div class="role-num">02</div>
+        <h4>Intelligence</h4>
+        <div class="role-jp">次に語るべきを導く</div>
+        <p>蓄積した記憶をもとに、企画・取材・制作・配信の判断を支援する。一般論ではなく、その会社が語る必然性のある論点を見つけるための知性となる。</p>
+      </div>
+      <div class="role-card">
+        <div class="role-num">03</div>
+        <h4>Guardian</h4>
+        <div class="role-jp">語りのズレ・劣化を防ぐ</div>
+        <p>AIの出力、各部門の発信、外部公開前のコンテンツを、ブランド・ファクト・文脈・ガバナンスの観点からチェック。創造性を止めず、信頼を守る。</p>
+      </div>
+    </div>
+
+    <div class="pull-quote">ブランドメモリーは「保管庫」ではなく、「作動する記憶」である。</div>
+  </section>
+
+  <!-- 10: PROBLEM -->
+  <section>
+    <div class="sec-num">10</div>
+    <h2 class="sec-title">AIで作れる時代に、ブランドは壊れやすくなった。</h2>
+    <p class="sec-lead">生成AIによって誰もが大量にコンテンツを作れるようになりました。しかしそれは、企業のストーリーテリングが実現されたことを意味しません。むしろ、部門ごとにAIが使われるほど、メッセージはばらつき、ブランドの輪郭はぼやけていきます。</p>
+
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="pn">PROBLEM 01</div>
+        <h4>語りが、部門ごとに分断される。</h4>
+        <p>IRは投資家に、採用は候補者に、PRはメディアに、それぞれ別の言葉で語る。本来はすべて同じ会社の語りであるはずなのに。</p>
+      </div>
+      <div class="problem-card">
+        <div class="pn">PROBLEM 02</div>
+        <h4>AI活用が、属人化する。</h4>
+        <p>各担当者の独自プロンプト、独自の判断基準。便利にはなるが、組織知にはならない。会社として学習が積み上がらない。</p>
+      </div>
+      <div class="problem-card">
+        <div class="pn">PROBLEM 03</div>
+        <h4>ガイドラインが、使われない。</h4>
+        <p>「誠実に」「挑戦的に」と書かれていても、IR資料・採用記事・SNSでどう表現するかは別問題。哲学が現場で翻訳されない。</p>
+      </div>
+      <div class="problem-card">
+        <div class="pn">PROBLEM 04</div>
+        <h4>AIのミスを、検知できない。</h4>
+        <p>個人運用が前提では、誤った数字、ブランド逸脱、リスク表現を組織として捕捉できない。AI時代の信頼毀損リスクが放置される。</p>
+      </div>
+      <div class="problem-card">
+        <div class="pn">PROBLEM 05</div>
+        <h4>会社が、学習しない。</h4>
+        <p>出して終わり。記事を作って終わり。反応データが次の企画に返らない限り、語りは進化しない。発信量が増えても、ブランドは薄まる。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11: 7 MEMORIES -->
+  <section>
+    <div class="sec-num">11</div>
+    <h2 class="sec-title">ブランドメモリーを構成する、7つの記憶。</h2>
+    <p class="sec-lead">ブランドメモリーは「ガイドラインを入れる箱」ではありません。OSの中核として機能させるため、企業の語りを支える7つの構造化された記憶として設計されます。</p>
+
+    <div class="mem-grid">
+      <div class="mem-card">
+        <div class="mem-num">MEMORY 01</div>
+        <h4>Identity Memory</h4>
+        <div class="mem-jp">存在意義の記憶</div>
+        <p>企業が何者なのか。ミッション、ビジョン、バリュー、創業ストーリー、変わらない信念。最上位の記憶であり、すべての語りの根に据えられる。</p>
+        <div class="tags"><span class="tag">Mission</span><span class="tag">Vision</span><span class="tag">Values</span><span class="tag">Origin</span></div>
+      </div>
+      <div class="mem-card">
+        <div class="mem-num">MEMORY 02</div>
+        <h4>Strategy Memory</h4>
+        <div class="mem-jp">戦略の記憶</div>
+        <p>企業がどこへ向かうのか。中期経営計画、事業戦略、資本政策、採用戦略。発信を、単なる広報ではなく経営戦略に接続するための記憶。</p>
+        <div class="tags"><span class="tag">中計</span><span class="tag">資本政策</span><span class="tag">人的資本</span><span class="tag">重点テーマ</span></div>
+      </div>
+      <div class="mem-card">
+        <div class="mem-num">MEMORY 03</div>
+        <h4>Narrative Memory</h4>
+        <div class="mem-jp">語りの記憶</div>
+        <p>企業がどんなストーリーで自分たちを説明してきたか。会社紹介、CEOメッセージ、IRストーリー、採用ピッチ。何をどう意味づけるかの記憶。</p>
+        <div class="tags"><span class="tag">CEO Voice</span><span class="tag">IR Story</span><span class="tag">採用ピッチ</span><span class="tag">危機対応</span></div>
+      </div>
+      <div class="mem-card">
+        <div class="mem-num">MEMORY 04</div>
+        <h4>Voice Memory</h4>
+        <div class="mem-jp">声の記憶</div>
+        <p>その企業らしい語り口。トーン、文体、よく使う言葉、使わない言葉。語尾、温度感、読者との距離感。表現の細部に宿る人格を記憶する。</p>
+        <div class="tags"><span class="tag">Tone</span><span class="tag">用語辞書</span><span class="tag">禁止表現</span><span class="tag">語尾</span></div>
+      </div>
+      <div class="mem-card">
+        <div class="mem-num">MEMORY 05</div>
+        <h4>Evidence Memory</h4>
+        <div class="mem-jp">根拠の記憶</div>
+        <p>何を根拠に語れるのか。事業データ、顧客事例、財務情報、第三者評価、取材ログ。AIにそれっぽさではなく、根拠あるストーリーを語らせるための記憶。</p>
+        <div class="tags"><span class="tag">財務データ</span><span class="tag">顧客事例</span><span class="tag">取材ログ</span><span class="tag">受賞歴</span></div>
+      </div>
+      <div class="mem-card">
+        <div class="mem-num">MEMORY 06</div>
+        <h4>Judgment Memory</h4>
+        <div class="mem-jp">判断の記憶</div>
+        <p>人間がどう直し、なぜそう判断したのか。AI出力への修正履歴、レビューコメント、却下/採用された表現。最も濃く企業らしさが現れるデータ。</p>
+        <div class="tags"><span class="tag">編集差分</span><span class="tag">レビュー</span><span class="tag">承認フロー</span><span class="tag">却下表現</span></div>
+      </div>
+      <div class="mem-card mem-full">
+        <div class="mem-num">MEMORY 07</div>
+        <h4>Response Memory</h4>
+        <div class="mem-jp">反応の記憶</div>
+        <p>語った結果、どう受け止められたか。PV、読了率、シェア、商談化、応募、投資家・採用候補者・社員の反応。ブランドメモリーを「静的なガイドライン」から「反応から学習する記憶」へと変える、ライフサイクルの最終層。</p>
+        <div class="tags"><span class="tag">PV / 読了率</span><span class="tag">商談化</span><span class="tag">投資家反応</span><span class="tag">採用エンゲージ</span><span class="tag">SNS反応</span><span class="tag">NPS</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12: OS ARCHITECTURE -->
+  <section id="os-arch">
+    <div class="sec-num">12</div>
+    <h2 class="sec-title">StoryHub OSのすべての工程で、ブランドメモリーが働く。</h2>
+    <p class="sec-lead">Insight・Interview・Studio・Feed の各プロダクトは、ブランドメモリーを参照してアウトプットを生成し、各プロダクトで発生した編集差分や反応データはブランドメモリーへ還流する。この参照と更新の循環こそが、StoryHubがOSである理由です。</p>
+
+    <div class="os-grid">
+      <div class="os-card">
+        <div class="os-step">STEP 01</div>
+        <h4>Insight</h4>
+        <div class="os-role">自社らしい論点を見つける</div>
+        <p>トレンド発見ではなく、自社のミッション・中計・過去発信と接続する論点発見へ。「この会社が語る必然性」のあるテーマを抽出する。</p>
+      </div>
+      <div class="os-card">
+        <div class="os-step">STEP 02</div>
+        <h4>Interview</h4>
+        <div class="os-role">語るべき一次情報を集める</div>
+        <p>一般的な質問ではなく、その会社の物語を引き出す質問へ。CEOの抽象的な言葉を、現場の実例エピソードへと接続する取材を支援する。</p>
+      </div>
+      <div class="os-card">
+        <div class="os-step">STEP 03</div>
+        <h4>Studio</h4>
+        <div class="os-role">ブランドらしく、正確に作る</div>
+        <p>下書き生成、トーン調整、用語統一、過去発信との整合性チェック、ファクトチェック。AI編集ツールから、ブランドに沿った制作・レビュー環境へ。</p>
+      </div>
+      <div class="os-card">
+        <div class="os-step">STEP 04</div>
+        <h4>Feed</h4>
+        <div class="os-role">届け、反応を学習する</div>
+        <p>配信から、語りの市場反応学習へ。どの語りがブランド資産として育っているか、どこで誤解されているかを次の企画へ還流する。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 13: GUARDIAN -->
+  <section id="guardian">
+    <div class="sec-num">13</div>
+    <h2 class="sec-title">創造性を止めるのではなく、信頼できる発信を、守る。</h2>
+    <p class="sec-lead">ブランドメモリーは、AIを止める壁ではありません。AIを安心して業務に組み込むための守護者です。創造性を殺さないために、5つの観点で語りを守ります。</p>
+
+    <div class="guardian-grid">
+      <div class="guardian-card">
+        <h4>Brand</h4>
+        <div class="gjp">ブランドらしさを守る</div>
+        <ul>
+          <li>トーン違反の検知</li>
+          <li>価値観整合チェック</li>
+          <li>流行語への偏向</li>
+          <li>語る必然性の検証</li>
+        </ul>
+      </div>
+      <div class="guardian-card">
+        <h4>Narrative</h4>
+        <div class="gjp">ストーリーの一貫性</div>
+        <ul>
+          <li>IR-採用の矛盾</li>
+          <li>CEO-現場のズレ</li>
+          <li>中計との接続</li>
+          <li>過去発信との整合</li>
+        </ul>
+      </div>
+      <div class="guardian-card">
+        <h4>Fact</h4>
+        <div class="gjp">事実の正確性</div>
+        <ul>
+          <li>数値の検証</li>
+          <li>固有名詞の確認</li>
+          <li>ハルシネーション検知</li>
+          <li>過去資料との一致</li>
+        </ul>
+      </div>
+      <div class="guardian-card">
+        <h4>Risk</h4>
+        <div class="gjp">リスクを守る</div>
+        <ul>
+          <li>法務・IRリスク</li>
+          <li>差別/偏見表現</li>
+          <li>業界別規制対応</li>
+          <li>未公開情報の漏洩</li>
+        </ul>
+      </div>
+      <div class="guardian-card">
+        <h4>Trust</h4>
+        <div class="gjp">信頼を守る</div>
+        <ul>
+          <li>誇張の検知</li>
+          <li>薄いAIコンテンツ</li>
+          <li>一次情報の有無</li>
+          <li>人間判断の介在</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 14: MATURITY -->
+  <section id="maturity">
+    <div class="sec-num">14</div>
+    <h2 class="sec-title">ブランドメモリーには、成熟度がある。</h2>
+    <p class="sec-lead">StoryHubが提供するのは、Level 0&ndash;2 の企業を Level 4&ndash;5 へ引き上げる体験です。記憶は文書化されただけでは資産にならない。業務に組み込まれ、学習し続けることで、はじめて経営インフラとなります。</p>
+
+    <div class="ladder">
+      <div class="level">
+        <div class="lvl-num">00</div>
+        <div><div class="lvl-name">No Memory</div><div class="lvl-jp">記憶がない</div></div>
+        <p>各担当者が個別にAIを使う。プロンプト属人化。ガイドラインは存在しても使われない。</p>
+        <div class="bar"><div class="bar-inner" style="width:5%"></div></div>
+      </div>
+      <div class="level">
+        <div class="lvl-num">01</div>
+        <div><div class="lvl-name">Documented</div><div class="lvl-jp">文書化された記憶</div></div>
+        <p>ブランドガイドラインや用語集が文書化されている。過去記事も保管されているが、制作時に自動参照されない。</p>
+        <div class="bar"><div class="bar-inner" style="width:22%"></div></div>
+      </div>
+      <div class="level">
+        <div class="lvl-num">02</div>
+        <div><div class="lvl-name">Searchable</div><div class="lvl-jp">検索できる記憶</div></div>
+        <p>過去発信や資料を検索できる。AIがRAG的に参照できる。ただし判断基準までは構造化されていない。</p>
+        <div class="bar"><div class="bar-inner" style="width:40%"></div></div>
+      </div>
+      <div class="level">
+        <div class="lvl-num">03</div>
+        <div><div class="lvl-name">Structured</div><div class="lvl-jp">構造化された記憶</div></div>
+        <p>トーン、用語、ストーリー、根拠、ステークホルダー別メッセージが整理。AI出力に反映され、部門横断で使える。</p>
+        <div class="bar"><div class="bar-inner" style="width:60%"></div></div>
+      </div>
+      <div class="level active">
+        <div class="lvl-num">04</div>
+        <div><div class="lvl-name">Operational</div><div class="lvl-jp">業務に組み込まれた記憶</div></div>
+        <p>Insight・Interview・Studio・Feed 各工程で参照される。承認フローやレビューに組み込まれ、修正と反応が記録される。</p>
+        <div class="bar"><div class="bar-inner" style="width:80%"></div></div>
+      </div>
+      <div class="level active">
+        <div class="lvl-num">05</div>
+        <div><div class="lvl-name">Learning</div><div class="lvl-jp">学習する記憶</div></div>
+        <p>使うほど語りが洗練される。成功/失敗を学習し、戦略変更にも進化的に追随。Story Scoreと連動して改善提案を出す。</p>
+        <div class="bar"><div class="bar-inner" style="width:100%"></div></div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- CLOSING -->
+<div class="closing">
+  <div class="closing-text">
+    AI時代、発信量は増える。<br>
+    しかし、語りが増えるほどブランドがぼやけるなら、<br>
+    それは成長ではなく、劣化である。<br><br>
+    ブランドメモリーは、<br>
+    企業の語りを、経営資産に変える記憶。
+  </div>
+  <div class="closing-meta">StoryHub OS / Brand Memory &middot; Tokyo &middot; Vol. 01 / 2026</div>
 </div>
 
 <footer>
